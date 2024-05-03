@@ -1,10 +1,20 @@
 from flask import Flask, jsonify, Response, make_response, redirect, url_for, request, render_template
 from video_processing import VideoPlayer
+from datetime import datetime
+
 
 app = Flask(__name__)
 vp = VideoPlayer()
 
-vp.run_video('/content/MyDrive/test1.mp4')
+playlist = [
+    ('X:\\video_record\\1may\\900to930.mp4', '2024-01-05 09:00'),
+    ('X:\\video_record\\1may\\test1.mp4','2024-01-05 17:57:41'),
+    ('X:\\video_record\\1may\\test2.mp4','2024-01-05 17:58:34')
+]
+
+i = 1
+
+vp.run_video(playlist[i][0], datetime.fromisoformat(playlist[i][1]))
 
 @app.route('/')
 def index():
