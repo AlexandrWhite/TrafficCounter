@@ -1,5 +1,4 @@
 import cv2 
-import supervision as sv 
 import numpy as np 
 
 class VideoPlayer():
@@ -19,6 +18,6 @@ class VideoPlayer():
             if not ret:
                 frame = VideoPlayer.black_image
                 self.cap.release()
-                
+
         yield (b'--frame\r\n'b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
 
