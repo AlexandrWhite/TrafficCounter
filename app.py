@@ -7,7 +7,8 @@ app = Flask(__name__)
 vp = VideoPlayer()
 
 playlist = [
-    ('/content/drive/MyDrive/video1may3/930to1000.mp4','2024-01-05 09:32:09')
+    ('test1.mp4','2024-01-05 17:57:41')
+    #('/content/drive/MyDrive/video1may3/930to1000.mp4','2024-01-05 09:32:09')
     # ('X:\\video_record\\1may\\900to930.mp4', '2024-01-05 09:00'),
     # ('X:\\video_record\\1may\\test1.mp4','2024-01-05 17:57:41'),
     # ('X:\\video_record\\1may\\test2.mp4','2024-01-05 17:58:34')
