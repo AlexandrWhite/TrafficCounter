@@ -38,6 +38,7 @@ class VideoPlayer():
 
     def generate_frames(self):
         while self.cap.isOpened():
+
             ret, frame = self.cap.read()
             
             if not ret:
