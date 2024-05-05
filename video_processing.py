@@ -65,7 +65,6 @@ class VideoPlayer():
 
         detections = sv.Detections.from_ultralytics(results[0])
         detections = tracker.update_with_detections(detections)
-
         self.__lines_count(detections)
 
         return frame
@@ -80,9 +79,11 @@ class VideoPlayer():
             print(line_id, ":", objects_id)
 
     def __display_lines(self,frame):
-        line_annotator = IdLineAnnotator(thickness=2, text_thickness=2, text_scale=1)
+        line_annotator = sv.LineAnnotator(thickness=2, text_thickness=2, text_scale=1)
         for line_id in self.line_zones.keys():
-            frame = line_annotator.annotate(frame=frame, line_counter = self.line_zones[line_id], id=line_id)
+            #frame = line_annotator.annotate(frame=frame, line_counter = self.line_zones[line_id], id=line_id)
+            lz = self.line_zones[line_id]
+            frame = line_annotator.annotate(frame=frame, line_counter=lz)
         return frame 
 
     def generate_frames(self):
