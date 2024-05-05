@@ -143,7 +143,9 @@ class VideoPlayer():
                 return
             
             minutes_of_video = self.cap.get(cv2.CAP_PROP_POS_MSEC)//1000//60
+            print(minutes_of_video)
             if minutes_of_video % 3 == 0:
+                print('CHECKPOINT')
                 self.__save_data()
 
             frame = self.__display_time(frame)
