@@ -78,6 +78,13 @@ class VideoPlayer():
             objects_id = detections[crossed].tracker_id
             print(line_id, ":", objects_id)
 
+        line_annotator = sv.LineZoneAnnotator(thickness=2, text_thickness=2, text_scale=1)
+        for line_id in self.line_zones.keys():
+            #frame = line_annotator.annotate(frame=frame, line_counter = self.line_zones[line_id], id=line_id)
+            lz = self.line_zones[line_id]
+            frame = line_annotator.annotate(frame=frame, line_counter=lz)
+        return frame 
+
     def __display_lines(self,frame):
         line_annotator = sv.LineZoneAnnotator(thickness=2, text_thickness=2, text_scale=1)
         for line_id in self.line_zones.keys():
@@ -95,7 +102,7 @@ class VideoPlayer():
                 return 
             
             frame = self.__display_time(frame)
-            frame = self.__display_lines(frame)
+            #frame = self.__display_lines(frame)
             frame = self.__predict_frame(frame)
             
             compression_level = 30
