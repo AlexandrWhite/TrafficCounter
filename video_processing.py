@@ -116,12 +116,13 @@ class VideoPlayer():
         import re
         headers = ['time','from', 'to', 'class']
         if self.data:
+            print("SAVED",self.video_path)
             file_name = re.match(r'.+/(.*)\.mp4', self.video_path).group(1)
             with open(f'{CSV_RESULT_PATH}/{file_name}.csv','w') as f:
                 dw = csv.DictWriter(f,fieldnames=headers)
                 dw.writeheader()
                 dw.writerows(self.data)
-                
+            
 
 
     def generate_frames(self):
