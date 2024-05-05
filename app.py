@@ -6,7 +6,7 @@ from datetime import datetime
 app = Flask(__name__)
 vp = VideoPlayer()
 
-CSV_RESULT_PATH = '/dataset'
+
 
 playlist = [
     ('video/test1.mp4','2024-01-05 17:57:41'),

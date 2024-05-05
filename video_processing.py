@@ -5,8 +5,9 @@ from ultralytics import YOLO
 import torch
 from id_line_annotator import IdLineAnnotator
 import supervision as sv 
-import app 
 
+CSV_RESULT_PATH = '/dataset'
+#CSV_RESULT_PATH = '/content/drive/MyDrive/may1csv/'
 
 class VideoPlayer():
     class_to_str = {2:'car',3:'motorcycle',5:'bus',7:'truck'}
@@ -116,7 +117,7 @@ class VideoPlayer():
         headers = ['time','from', 'to', 'class']
         if self.data:
             file_name = re.match(r'.+/(.*)\.mp4', self.video_path).group(1)
-            with open(f'{app.CSV_RESULT_PATH}/{file_name}.csv','w') as f:
+            with open(f'{CSV_RESULT_PATH}/{file_name}.csv','w') as f:
                 dw = csv.DictWriter(f,fieldnames=headers)
                 dw.writeheader()
                 dw.writerows(self.data)
