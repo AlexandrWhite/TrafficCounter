@@ -116,9 +116,9 @@ class VideoPlayer():
         import csv
         import re
         headers = ['time','from', 'to', 'class']
-        if self.data:
-            print("SAVED",self.video_path)
+        if self.data:            
             file_name = re.match(r'.+/(.*)\.mp4', self.video_path).group(1)
+            print("SAVED",self.video_time,file_name)
             with open(f'{CSV_RESULT_PATH}/{file_name}.csv','w') as f:
                 dw = csv.DictWriter(f,fieldnames=headers)
                 dw.writeheader()
