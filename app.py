@@ -6,6 +6,8 @@ from datetime import datetime
 app = Flask(__name__)
 vp = VideoPlayer()
 
+print("some test")
+
 playlist = [
     ('video/test1.mp4','2024-01-05 17:57:41')
     #('/content/drive/MyDrive/video1may3/930to1000.mp4','2024-01-05 09:32:09')
