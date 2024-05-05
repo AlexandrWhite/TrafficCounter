@@ -142,7 +142,8 @@ class VideoPlayer():
                 self.__save_data()
                 return
             
-            if self.frame_num % 10:
+            minutes_of_video = self.cap.get(cv2.CAP_PROP_POS_MSEC)//1000//60
+            if minutes_of_video % 3 == 0:
                 self.__save_data()
 
             frame = self.__display_time(frame)
