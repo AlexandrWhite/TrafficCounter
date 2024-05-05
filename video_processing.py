@@ -6,13 +6,13 @@ import torch
 from id_line_annotator import IdLineAnnotator
 import supervision as sv 
 
-#CSV_RESULT_PATH = '/dataset'
+#CSV_RESULT_PATH = 'dataset'
 CSV_RESULT_PATH = '/content/drive/MyDrive/may1csv'
 
 class VideoPlayer():
     class_to_str = {2:'car',3:'motorcycle',5:'bus',7:'truck'}
 
-    def __init__(self, model = 'yolov8x.pt'):
+    def __init__(self, model = 'yolov8n.pt'):
         self.cap = cv2.VideoCapture() 
         self.video_time = None 
         self.video_path = None 
@@ -132,10 +132,14 @@ class VideoPlayer():
             ret, frame = self.cap.read()
             
             if not ret and self.playlist:
-                self.__run_video()
                 self.__save_data()
+                self.__run_video()
                 continue 
-         
+
+            if not ret:
+                self.__save_data()
+                return
+            
             frame = self.__display_time(frame)
             frame = self.__predict_frame(frame)
             frame = self.__display_lines(frame)
