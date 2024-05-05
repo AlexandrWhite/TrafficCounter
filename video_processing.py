@@ -72,7 +72,7 @@ class VideoPlayer():
     def __lines_count(self, detections:sv.Detections):
         for line_id in self.line_zones.keys():
             lz = self.line_zones[line_id]
-            crossed_in, crossed_out = lz.trigger(detections)
+            crossed_in, crossed_out = lz.update(detections)
             crossed = crossed_in | crossed_out
 
             objects_id = detections[crossed].tracker_id
