@@ -20,10 +20,10 @@ i = 0
 
 vp.run_video(playlist[i][0], datetime.fromisoformat(playlist[i][1]))
 
-vp.add_line(284,49, 617,253, 781,439)
-vp.add_line(161,170, 369,424, 781,439)
+#vp.add_line(284,49, 617,253, 781,439)
+#vp.add_line(161,170, 369,424, 781,439)
 vp.add_line(276,432, 607,212, 781,439)
-vp.add_line(1,272, 454,34, 781,439)
+#vp.add_line(1,272, 454,34, 781,439)
 
 @app.route('/')
 def index():

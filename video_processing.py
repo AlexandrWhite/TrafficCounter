@@ -8,7 +8,7 @@ import supervision as sv
 
 class VideoPlayer():
 
-    def __init__(self, model = 'yolov8x.pt'):
+    def __init__(self, model = 'yolov8n.pt'):
         self.cap = cv2.VideoCapture() 
         self.video_time = None 
 
@@ -72,11 +72,10 @@ class VideoPlayer():
     def __lines_count(self, detections:sv.Detections):
         for line_id in self.line_zones.keys():
             lz = self.line_zones[line_id]
-            crossed_in, crossed_out = lz.update(detections)
+            crossed_in, crossed_out = lz.trigger(detections)
+            print(line_id,':',  lz.in_count, lz.out_count)
             crossed = crossed_in | crossed_out
-
-            objects_id = detections[crossed].tracker_id
-            print(line_id, ":", objects_id)
+            #print(line_id, ":", objects_id)
 
     def __display_lines(self,frame):
         line_annotator = sv.LineZoneAnnotator(thickness=2, text_thickness=2, text_scale=1)
@@ -86,6 +85,14 @@ class VideoPlayer():
             frame = line_annotator.annotate(frame=frame, line_counter=lz)
         return frame 
 
+    def __display_lines2(self,frame):
+        line_annotator = IdLineAnnotator(thickness=2, text_thickness=2, text_scale=1)
+        for line_id in self.line_zones.keys():
+            #frame = line_annotator.annotate(frame=frame, line_counter = self.line_zones[line_id], id=line_id)
+            lz = self.line_zones[line_id]
+            frame = line_annotator.annotate(frame=frame, line_counter=lz, id = line_id)
+        return frame 
+
     def generate_frames(self):
         while self.cap.isOpened():
 
@@ -93,10 +100,11 @@ class VideoPlayer():
             
             if not ret:
                 return 
-            
+         
             frame = self.__display_time(frame)
-            frame = self.__display_lines(frame)
             frame = self.__predict_frame(frame)
+            frame = self.__display_lines2(frame)
+            
             
             compression_level = 30
             buffer = cv2.imencode('.jpg',frame,[cv2.IMWRITE_JPEG_QUALITY, compression_level])[1]
