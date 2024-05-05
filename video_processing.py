@@ -65,11 +65,11 @@ class VideoPlayer():
 
         detections = sv.Detections.from_ultralytics(results[0])
         detections = tracker.update_with_detections(detections)
-        self.__lines_count(detections)
+        frame = self.__lines_count(frame, detections)
 
         return frame
     
-    def __lines_count(self, detections:sv.Detections):
+    def __lines_count(self, frame, detections:sv.Detections):
         for line_id in self.line_zones.keys():
             lz = self.line_zones[line_id]
             crossed_in, crossed_out = lz.trigger(detections)
