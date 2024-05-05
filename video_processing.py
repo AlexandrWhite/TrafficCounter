@@ -131,7 +131,7 @@ class VideoPlayer():
 
             ret, frame = self.cap.read()
             
-            if not ret:
+            if not ret and self.playlist:
                 self.__run_video()
                 self.__save_data()
                 continue 
