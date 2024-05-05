@@ -8,7 +8,7 @@ import supervision as sv
 
 class VideoPlayer():
 
-    def __init__(self, model = 'yolov8n.pt'):
+    def __init__(self, model = 'yolov8x.pt'):
         self.cap = cv2.VideoCapture() 
         self.video_time = None 
 
