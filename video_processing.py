@@ -129,21 +129,27 @@ class VideoPlayer():
     def generate_frames(self):
         
         while self.cap.isOpened():
-
+            
             ret, frame = self.cap.read()
             
             if not ret and self.playlist:
                 self.__save_data()
                 self.__run_video()
+                self.frame_num = 1
                 continue 
 
             if not ret:
                 self.__save_data()
                 return
             
+            if self.frame_num % 10:
+                self.__save_data()
+
             frame = self.__display_time(frame)
             frame = self.__predict_frame(frame)
             frame = self.__display_lines(frame)
+
+            
             #self.__save_data()
             
             
