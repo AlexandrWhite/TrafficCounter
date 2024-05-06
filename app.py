@@ -9,15 +9,24 @@ vp = VideoPlayer()
 
 
 playlist = [
-    ('/content/drive/MyDrive/video1may3/630to7.mp4','2024-01-05 06:29:47'),
+    #('/content/drive/MyDrive/video1may3/630to7.mp4','2024-01-05 06:29:47'),
     ('/content/drive/MyDrive/video1may3/700to730.mp4','2024-01-05 06:57:30'),
-    #('video/test1.mp4','2024-01-05 17:57:41'),
-    #('video/test2.mp4','2024-01-05 17:58:35')
-    #('/content/drive/MyDrive/video1may3/930to1000.mp4','2024-01-05 09:32:09')
-    #('X:\\video_record\\1may\\900to930.mp4', '2024-01-05 09:00'),
-    # ('X:\\video_record\\1may\\test1.mp4','2024-01-05 17:57:41'),
-    # ('X:\\video_record\\1may\\test2.mp4','2024-01-05 17:58:34')
-]
+    ('/content/drive/MyDrive/video1may3/730to800.mp4','2024-01-05 07:33:30'),
+    ('/content/drive/MyDrive/video1may3/800to830.mp4','2024-01-05 07:55:20'),
+    ('/content/drive/MyDrive/video1may3/830to900.mp4','2024-01-05 08:33:35'),
+    ('/content/drive/MyDrive/video1may3/900to930.mp4','2024-01-05 09:01:08'),
+    ('/content/drive/MyDrive/video1may3/930to1000.mp4','2024-01-05 09:32:08'),
+    ('/content/drive/MyDrive/video1may3/1000to1030.mp4','2024-01-05 10:05:48'),
+    ('/content/drive/MyDrive/video1may3/1030to1100.mp4','2024-01-05 10:32:10'),
+    ('/content/drive/MyDrive/video1may3/1100to1130.mp4','2024-01-05 10:58:47'),
+    
+    #не грузит
+    ('/content/drive/MyDrive/video1may3/1130to1200.mp4','2024-01-05 10:58:47'),
+
+    ('/content/drive/MyDrive/video1may3/1200to1230.mp4','2024-01-05 11:56:01'),
+    ('/content/drive/MyDrive/video1may3/1230to1300.mp4','2024-01-05 12:26:05'),
+    ('/content/drive/MyDrive/video1may3/1300to1330.mp4','2024-01-05 13:04:03'),
+]   
 
 
 

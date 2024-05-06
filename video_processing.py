@@ -118,10 +118,11 @@ class VideoPlayer():
         if self.data:            
             file_name = re.match(r'.+/(.*)\.mp4', self.video_path).group(1)
             print("SAVED",self.video_time,file_name)
-            with open(f'{CSV_RESULT_PATH}/{file_name}.csv','w') as f:
+            with open(f'{CSV_RESULT_PATH}/{file_name}.csv','a') as f:
                 dw = csv.DictWriter(f,fieldnames=headers)
                 dw.writeheader()
                 dw.writerows(self.data)
+                self.data.clear()
             
 
 
