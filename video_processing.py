@@ -114,13 +114,15 @@ class VideoPlayer():
     def __save_data(self):
         import csv
         import re
+        import os
         headers = ['time','from', 'to', 'class']
         if self.data:            
             file_name = re.match(r'.+/(.*)\.mp4', self.video_path).group(1)
             print("SAVED",self.video_time,file_name)
             with open(f'{CSV_RESULT_PATH}/{file_name}.csv','a') as f:
                 dw = csv.DictWriter(f,fieldnames=headers)
-                dw.writeheader()
+                if not os.path.isfile(f'{CSV_RESULT_PATH}/{file_name}.csv'):
+                    dw.writeheader()
                 dw.writerows(self.data)
                 self.data.clear()
             
