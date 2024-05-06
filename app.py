@@ -10,7 +10,7 @@ vp = VideoPlayer()
 
 playlist = [
     #('/content/drive/MyDrive/video1may3/630to7.mp4','2024-01-05 06:29:47'),
-    ('/content/drive/MyDrive/video1may3/700to730.mp4','2024-01-05 06:57:30'),
+    #('/content/drive/MyDrive/video1may3/700to730.mp4','2024-01-05 06:57:30'),
     ('/content/drive/MyDrive/video1may3/730to800.mp4','2024-01-05 07:33:30'),
     ('/content/drive/MyDrive/video1may3/800to830.mp4','2024-01-05 07:55:20'),
     ('/content/drive/MyDrive/video1may3/830to900.mp4','2024-01-05 08:33:35'),
