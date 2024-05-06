@@ -12,7 +12,7 @@ CSV_RESULT_PATH = '/content/drive/MyDrive/may1csv'
 class VideoPlayer():
     class_to_str = {2:'car',3:'motorcycle',5:'bus',7:'truck'}
 
-    def __init__(self, model = 'yolov8n.pt'):
+    def __init__(self, model = 'yolov8x.pt'):
         self.cap = cv2.VideoCapture() 
         self.video_time = None 
         self.video_path = None 
