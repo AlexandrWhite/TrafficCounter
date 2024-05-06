@@ -79,7 +79,7 @@ class VideoPlayer():
         frame = results[0].plot()
 
         detections = sv.Detections.from_ultralytics(results[0])
-        self.__lines_count(detections)
+        #self.__lines_count(detections)
 
         return frame
     
