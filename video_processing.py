@@ -99,8 +99,7 @@ class VideoPlayer():
                         self.transport[obj_id] = {'from':line_id, 'class':class_name}
                     else:
                         self.transport[obj_id]['to'] = line_id
-                        self.transport[obj_id]['time'] = self.video_time
-                        print(self.transport[obj_id])  
+                        self.transport[obj_id]['time'] = self.video_time  
                         self.data.append(self.transport[obj_id])
 
 
