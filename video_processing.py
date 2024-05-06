@@ -127,7 +127,7 @@ class VideoPlayer():
 
 
     def generate_frames(self):
-        
+        frame_num = 0
         while self.cap.isOpened():
             
             ret, frame = self.cap.read()
@@ -135,16 +135,17 @@ class VideoPlayer():
             if not ret and self.playlist:
                 self.__save_data()
                 self.__run_video()
-                self.frame_num = 1
+                frame_num = 0 
                 continue 
 
             if not ret:
                 self.__save_data()
                 return
             
-            minutes_of_video = self.cap.get(cv2.CAP_PROP_POS_MSEC)//1000//60
-            print(minutes_of_video)
-            if minutes_of_video % 3 == 0:
+            #minutes_of_video = self.cap.get(cv2.CAP_PROP_POS_MSEC)//1000
+            #cv2.putText(frame,str(minutes_of_video//60)+":"+str(minutes_of_video%60),(25,25), cv2.FONT_HERSHEY_SIMPLEX, 1,(255,255,255),2,cv2.LINE_AA)
+
+            if frame_num % 2000 == 0:
                 print('CHECKPOINT')
                 self.__save_data()
 
@@ -153,8 +154,7 @@ class VideoPlayer():
             frame = self.__display_lines(frame)
 
             
-            #self.__save_data()
-            
+            frame_num += 1
             
             compression_level = 30
             buffer = cv2.imencode('.jpg',frame,[cv2.IMWRITE_JPEG_QUALITY, compression_level])[1]
