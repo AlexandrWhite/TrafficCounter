@@ -133,6 +133,7 @@ class VideoPlayer():
 
 
     def generate_frames(self):
+        frame_num = 0
         while self.cap.isOpened():
             
             ret, frame = self.cap.read()
@@ -158,15 +159,16 @@ class VideoPlayer():
 
             #print(str(minutes_of_video//60)+":"+str(minutes_of_video%60))
 
-            # if frame_num % 2000 == 0:
-            #     print('CHECKPOINT')
-            #     self.__save_data()
+            if frame_num % 200 == 0:
+                print('CHECKPOINT')
+                self.__save_data()
 
             frame = self.__display_time(frame)
             frame = self.__display_lines(frame)
             frame = self.__predict_frame(frame)
-           
-            
+
+            frame_num += 1
+
             # compression_level = 30
             # buffer = cv2.imencode('.jpg',frame,[cv2.IMWRITE_JPEG_QUALITY, compression_level])[1]
             # frame = buffer.tobytes()
