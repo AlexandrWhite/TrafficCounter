@@ -2,7 +2,8 @@ from video_processing import VideoPlayer
 
 vp = VideoPlayer()
 playlist = [
-    ('video/test1.mp4', '2024-01-05 06:29:47')
+    ('video/test1.mp4', '2024-01-05 06:29:47'),
+    ('video/test2.mp4', '2024-01-05 06:29:47')
     #('video/test2.mp4', '2024-01-05 06:29:47')
     # #('/content/drive/MyDrive/video1may3/630to7.mp4','2024-01-05 06:29:47'),
     # #('/content/drive/MyDrive/video1may3/700to730.mp4','2024-01-05 06:57:30'),
@@ -41,3 +42,5 @@ vp.add_line(284,49, 617,253, 781,439)
 vp.add_line(161,170, 369,424, 781,439)
 vp.add_line(276,432, 607,212, 781,439)
 vp.add_line(1,272, 454,34, 781,439)
+
+vp.generate_frames()

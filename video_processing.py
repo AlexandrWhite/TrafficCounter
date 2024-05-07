@@ -32,6 +32,7 @@ class VideoPlayer():
     def set_playlist(self,playlist):
         self.playlist = playlist
         self.__run_video()
+    
 
     def __run_video(self):
         if self.playlist:
@@ -43,7 +44,6 @@ class VideoPlayer():
 
             #self.bar = IncrementalBar(path, max=self.cap.get(cv2.CAP_PROP_FRAME_COUNT))
 
-            self.generate_frames()
         
     def add_line(self,x1,y1,x2,y2,width,height):
         self.add_point(x1,y1,width, height)
@@ -88,26 +88,24 @@ class VideoPlayer():
 
         return frame
     
-    def __lines_count(self, detections:sv.Detections):
-        print(self.data)
+    def __lines_count(self, detections:sv.Detections):  
+        if detections.tracker_id is not None:
+            for line_id in self.line_zones.keys():
+                lz = self.line_zones[line_id]
+                crossed_in, crossed_out = lz.trigger(detections)
+                crossed = crossed_in | crossed_out
+                
+                crossed_info = zip(detections[crossed].tracker_id, detections[crossed].class_id)
+                
 
-        for line_id in self.line_zones.keys():
-            lz = self.line_zones[line_id]
-            crossed_in, crossed_out = lz.trigger(detections)
-            crossed = crossed_in | crossed_out
-            
-            crossed_info = zip(detections[crossed].tracker_id, detections[crossed].class_id)
-            
-
-            for obj_id, class_id in crossed_info:
-                if obj_id not in self.transport.keys():
-                    class_name = VideoPlayer.class_to_str[class_id]
-                    self.transport[obj_id] = {'from':line_id, 'class':class_name}
-                else:
-                    self.transport[obj_id]['to'] = line_id
-                    self.transport[obj_id]['time'] = self.video_time  
-                    self.data.append(self.transport[obj_id])
-
+                for obj_id, class_id in crossed_info:
+                    if obj_id not in self.transport.keys():
+                        class_name = VideoPlayer.class_to_str[class_id]
+                        self.transport[obj_id] = {'from':line_id, 'class':class_name}
+                    else:
+                        self.transport[obj_id]['to'] = line_id
+                        self.transport[obj_id]['time'] = self.video_time  
+                        self.data.append(self.transport[obj_id])
 
     def __display_lines(self,frame):
         line_annotator = IdLineAnnotator(thickness=2, text_thickness=2, text_scale=1)
@@ -118,7 +116,6 @@ class VideoPlayer():
 
 
     def __save_data(self):
-        print('call')
         import csv
         import re
         import os
@@ -141,12 +138,12 @@ class VideoPlayer():
             ret, frame = self.cap.read()
             #self.bar.next()
 
-            print('aaa')
+            print('tr',self.transport)
 
             if not ret and self.playlist:
                 self.__save_data()
-                self.__run_video()
                 #self.bar.finish()
+                self.__run_video()
                 continue 
 
             if not ret:
@@ -156,24 +153,25 @@ class VideoPlayer():
 
            
 
-            #minutes_of_video = self.cap.get(cv2.CAP_PROP_POS_MSEC)//1000
+           # minutes_of_video = self.cap.get(cv2.CAP_PROP_POS_MSEC)//1000
             #cv2.putText(frame,str(minutes_of_video//60)+":"+str(minutes_of_video%60),(25,25), cv2.FONT_HERSHEY_SIMPLEX, 1,(255,255,255),2,cv2.LINE_AA)
-     
+
+            #print(str(minutes_of_video//60)+":"+str(minutes_of_video%60))
 
             # if frame_num % 2000 == 0:
             #     print('CHECKPOINT')
             #     self.__save_data()
 
             frame = self.__display_time(frame)
-            frame = self.__predict_frame(frame)
-
             frame = self.__display_lines(frame)
+            frame = self.__predict_frame(frame)
+           
             
-            compression_level = 30
-            buffer = cv2.imencode('.jpg',frame,[cv2.IMWRITE_JPEG_QUALITY, compression_level])[1]
-            frame = buffer.tobytes()
+            # compression_level = 30
+            # buffer = cv2.imencode('.jpg',frame,[cv2.IMWRITE_JPEG_QUALITY, compression_level])[1]
+            # frame = buffer.tobytes()
         
-            yield (b'--frame\r\n'b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
+            # yield (b'--frame\r\n'b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
        
         
    
