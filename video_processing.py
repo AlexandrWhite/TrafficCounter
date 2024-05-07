@@ -146,12 +146,16 @@ class VideoPlayer():
             
             #minutes_of_video = self.cap.get(cv2.CAP_PROP_POS_MSEC)//1000
             #cv2.putText(frame,str(minutes_of_video//60)+":"+str(minutes_of_video%60),(25,25), cv2.FONT_HERSHEY_SIMPLEX, 1,(255,255,255),2,cv2.LINE_AA)
+            
+            if frame_num % 10:
+                print('I debug')
 
             # if frame_num % 2000 == 0:
             #     print('CHECKPOINT')
             #     self.__save_data()
 
             frame = self.__display_time(frame)
+            
             #frame = self.__predict_frame(frame)
             #frame = self.__display_lines(frame)
 
