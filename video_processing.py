@@ -153,7 +153,7 @@ class VideoPlayer():
 
             frame = self.__display_time(frame)
             frame = self.__predict_frame(frame)
-            frame = self.__display_lines(frame)
+            #frame = self.__display_lines(frame)
 
             
             frame_num += 1
