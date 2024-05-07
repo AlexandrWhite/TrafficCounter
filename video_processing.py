@@ -13,7 +13,7 @@ CSV_RESULT_PATH = 'dataset'
 class VideoPlayer():
     class_to_str = {2:'car',3:'motorcycle',5:'bus',7:'truck'}
 
-    def __init__(self, model = 'yolov8n.pt'):
+    def __init__(self, model = 'yolov8x.pt'):
         self.cap = cv2.VideoCapture() 
         self.video_time = None 
         self.video_path = None 
@@ -42,7 +42,7 @@ class VideoPlayer():
             self.video_path = path
             self.playlist.pop(0)
 
-            #self.bar = IncrementalBar(path, max=self.cap.get(cv2.CAP_PROP_FRAME_COUNT))
+            self.bar = IncrementalBar(path, max=self.cap.get(cv2.CAP_PROP_FRAME_COUNT))
 
         
     def add_line(self,x1,y1,x2,y2,width,height):
@@ -136,19 +136,19 @@ class VideoPlayer():
         while self.cap.isOpened():
             
             ret, frame = self.cap.read()
-            #self.bar.next()
+            self.bar.next()
 
-            print('tr',self.transport)
+            #print('tr',self.transport)
 
             if not ret and self.playlist:
                 self.__save_data()
-                #self.bar.finish()
+                self.bar.finish()
                 self.__run_video()
                 continue 
 
             if not ret:
                 self.__save_data()
-                #self.bar.finish()
+                self.bar.finish()
                 return
 
            
