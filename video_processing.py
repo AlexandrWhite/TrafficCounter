@@ -78,7 +78,7 @@ class VideoPlayer():
                                     tracker='bytetrack.yaml')
         frame = results[0].plot()
 
-        detections = sv.Detections.from_ultralytics(results[0])
+        #detections = sv.Detections.from_ultralytics(results[0])
         #self.__lines_count(detections)
 
         return frame
