@@ -9,10 +9,11 @@ vp = VideoPlayer()
 
 
 playlist = [
-    #('/content/drive/MyDrive/video1may3/630to7.mp4','2024-01-05 06:29:47'),
-    #('/content/drive/MyDrive/video1may3/700to730.mp4','2024-01-05 06:57:30'),
-    #('/content/drive/MyDrive/video1may3/730to800.mp4','2024-01-05 07:33:30'),
-    #('/content/drive/MyDrive/video1may3/800to830.mp4','2024-01-05 07:55:20'),
+
+    # #('/content/drive/MyDrive/video1may3/630to7.mp4','2024-01-05 06:29:47'),
+    # #('/content/drive/MyDrive/video1may3/700to730.mp4','2024-01-05 06:57:30'),
+    # #('/content/drive/MyDrive/video1may3/730to800.mp4','2024-01-05 07:33:30'),
+    # #('/content/drive/MyDrive/video1may3/800to830.mp4','2024-01-05 07:55:20'),
     ('/content/drive/MyDrive/video1may3/830to900.mp4','2024-01-05 08:33:35'),
     ('/content/drive/MyDrive/video1may3/900to930.mp4','2024-01-05 09:01:08'),
     ('/content/drive/MyDrive/video1may3/930to1000.mp4','2024-01-05 09:32:08'),
@@ -34,7 +35,7 @@ playlist = [
     ('/content/drive/MyDrive/video1may3/1600to1630.mp4','2024-01-05 16:01:49'),
     ('/content/drive/MyDrive/video1may3/1630to1700.mp4','2024-01-05 16:32:12'),
     ('/content/drive/MyDrive/video1may3/1700to1730.mp4','2024-01-05 17:04:31'),
-    ('/content/drive/MyDrive/video1may3/1730to1800.mp4','2024-01-05 17:32:31'),
+    ('/content/drive/MyDrive/video1may3/1730to1800.mp4','2024-01-05 17:32:31')
 ]   
 
 
@@ -60,4 +61,4 @@ def video():
 
 
 if __name__ == '__main__':
-    app.run(debug=False)
+    app.run(debug=True)

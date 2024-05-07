@@ -12,7 +12,7 @@ CSV_RESULT_PATH = '/content/drive/MyDrive/may1csv'
 class VideoPlayer():
     class_to_str = {2:'car',3:'motorcycle',5:'bus',7:'truck'}
 
-    def __init__(self, model = 'yolov8x.pt'):
+    def __init__(self, model = 'yolov8n.pt'):
         self.cap = cv2.VideoCapture() 
         self.video_time = None 
         self.video_path = None 
@@ -35,7 +35,6 @@ class VideoPlayer():
         if self.playlist:
             path, start_time = self.playlist[0]
             self.cap = cv2.VideoCapture(path)
-
             self.start_video_time = datetime.datetime.fromisoformat(start_time)
             self.video_path = path
             self.playlist.pop(0)
@@ -147,7 +146,8 @@ class VideoPlayer():
             #minutes_of_video = self.cap.get(cv2.CAP_PROP_POS_MSEC)//1000
             #cv2.putText(frame,str(minutes_of_video//60)+":"+str(minutes_of_video%60),(25,25), cv2.FONT_HERSHEY_SIMPLEX, 1,(255,255,255),2,cv2.LINE_AA)
 
-            print(frame_num)          
+            if frame_num % 100 == 0:
+                print(f'I alive {frame_num}')       
 
             # if frame_num % 2000 == 0:
             #     print('CHECKPOINT')
