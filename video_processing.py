@@ -160,7 +160,7 @@ class VideoPlayer():
             #print(str(minutes_of_video//60)+":"+str(minutes_of_video%60))
 
             if frame_num % 10000 == 0:
-                print('CHECKPOINT')
+                print('\nCHECKPOINT')
                 self.__save_data()
 
             frame = self.__display_time(frame)
