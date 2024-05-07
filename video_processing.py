@@ -134,20 +134,18 @@ class VideoPlayer():
             ret, frame = self.cap.read()
             
             if not ret and self.playlist:
-                #self.__save_data()
+                self.__save_data()
                 self.__run_video()
                 frame_num = 0 
                 continue 
 
             if not ret:
-                #self.__save_data()
+                self.__save_data()
                 return
             
             #minutes_of_video = self.cap.get(cv2.CAP_PROP_POS_MSEC)//1000
             #cv2.putText(frame,str(minutes_of_video//60)+":"+str(minutes_of_video%60),(25,25), cv2.FONT_HERSHEY_SIMPLEX, 1,(255,255,255),2,cv2.LINE_AA)
-
-            if frame_num % 100 == 0:
-                print(f'I alive {frame_num}')       
+     
 
             # if frame_num % 2000 == 0:
             #     print('CHECKPOINT')
@@ -161,11 +159,11 @@ class VideoPlayer():
             
             frame_num += 1
             
-            compression_level = 30
-            buffer = cv2.imencode('.jpg',frame,[cv2.IMWRITE_JPEG_QUALITY, compression_level])[1]
-            frame = buffer.tobytes()
+            #compression_level = 30
+            #buffer = cv2.imencode('.jpg',frame,[cv2.IMWRITE_JPEG_QUALITY, compression_level])[1]
+            #frame = buffer.tobytes()
         
-            yield (b'--frame\r\n'b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
+            #yield (b'--frame\r\n'b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
        
         
    
