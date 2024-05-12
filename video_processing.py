@@ -8,7 +8,7 @@ import supervision as sv
 from progress.bar import IncrementalBar
 
 #CSV_RESULT_PATH = 'dataset'
-CSV_RESULT_PATH = '/content/drive/MyDrive/may1csv'
+CSV_RESULT_PATH = '/content/drive/MyDrive/may1csv(2)'
 
 class VideoPlayer():
     class_to_str = {2:'car',3:'motorcycle',5:'bus',7:'truck'}
